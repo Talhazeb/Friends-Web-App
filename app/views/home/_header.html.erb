@@ -1,0 +1,67 @@
+<header class="main-header">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg main-nav px-0">
+      <%= link_to image_tag("logo.svg", :alt => "rajeshdas.com", :size => "50x50"), root_path, class: "navbar-brand" %>
+      <!--      <a class="navbar-brand" href="/mojo">-->
+      <!--        <img src="http://rajeshdas.com/assets/images/logo.svg" alt="rajeshdas.com">-->
+      <!--      </a>-->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="icon-bar icon-bar-1"></span>
+        <span class="icon-bar icon-bar-2"></span>
+        <span class="icon-bar icon-bar-3"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainMenu">
+        <ul class="navbar-nav ml-auto text-uppercase f1">
+          <li>
+            <% if current_page?(root_path) %>
+              <%= link_to "Home", root_path, class: "active active-first" %>
+            <% else %>
+              <%= link_to "Home", root_path %>
+            <% end %>
+          </li>
+          <% if user_signed_in? %>
+            <li>
+              <% if current_page?(friends_path) %>
+                <%= link_to "Friends", friends_path, class: "active active-first" %>
+              <% else %>
+                <%= link_to "Friends", friends_path %>
+              <% end %>
+            </li>
+            <li>
+              <% if current_page?(new_friend_path) %>
+                <%= link_to "Add Friend", new_friend_path, class: "active active-first" %>
+              <% else %>
+                <%= link_to "Add Friend", new_friend_path %>
+              <% end %>
+            </li>
+            <li>
+              <% if current_page?(edit_user_registration_path) %>
+                <%= link_to "Edit Profile", edit_user_registration_path, class: "active active-first" %>
+              <% else %>
+                <%= link_to "Edit Profile", edit_user_registration_path %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "Sign Out", destroy_user_session_path %>
+            </li>
+          <% else %>
+          <li>
+            <% if current_page?(new_user_registration_path) %>
+              <%= link_to "Sign Up", new_user_registration_path, class: "active active-first" %>
+            <% else %>
+              <%= link_to "Sign Up", new_user_registration_path %>
+            <% end %>
+          </li>
+          <li>
+            <% if current_page?(new_user_session_path) %>
+              <%= link_to "Sign In", new_user_session_path, class: "active active-first" %>
+            <% else %>
+              <%= link_to "Sign In", new_user_session_path %>
+            <% end %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>

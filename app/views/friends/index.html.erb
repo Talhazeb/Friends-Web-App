@@ -1,0 +1,59 @@
+<% if user_signed_in? %>
+
+  <div class="tablerounededCorner">
+    <table class="table table-bordered table-striped roundedTable">
+      <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @friends.each do |friend| %>
+        <% if friend.user == current_user %>
+          <tr>
+            <td>
+              <%= link_to friend.first_name + ' ' + friend.last_name, friend %>
+            <td><%= friend.email %></td>
+            <td><%= friend.phone %></td>
+            <td><%= button_to 'Delete', friend, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %></td>
+          </tr>
+        <% end %>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <br>
+
+  <%= link_to "New Friend", new_friend_path, class: "btn btn-secondary" %>
+<% end %>
+<%# else %>
+
+<!--<h1>Hello World!</h1>-->
+
+<%# end %>
+
+
+
+
+
+
+
+
+<!--<p style="color: green"><%#= notice %></p>-->
+
+<!--<h1>Friends</h1>-->
+
+<!--<div id="friends">-->
+<%# @friends.each do |friend| %>
+<%#= render friend %>
+<!--    <p>-->
+<%#= link_to "Show this friend", friend %>
+<!--    </p>-->
+<%# end %>
+<!--</div>-->
+
+<%#= link_to "New friend", new_friend_path %>
